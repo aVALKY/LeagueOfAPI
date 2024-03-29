@@ -30,7 +30,10 @@ function searchForPlayer (event){
         <button onClick={(e) => {searchForPlayer(e)}}>Rechercher</button>
       </div>
       {JSON.stringify(playerData) != '{}' ? 
-        <> <p>Il y a des données sur le joueur</p> </> 
+        <> <p> Pseudo : {playerData.name}</p>
+           <p>Niveau : {playerData.summonerLevel}</p>
+           <img width="100" height="100" src={"https://ddragon.leagueoflegends.com/cdn/14.6.1/img/profileicon/" + playerData.profileIconId +  ".png"}/>
+        </> 
         : 
         <> <p>Il n'y a pas de données sur le joueur</p> </>
       }
