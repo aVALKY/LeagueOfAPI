@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+body {
+  background-color: #132843;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#titleSearchPlayer {
+  color: #F0C986;
+  font-size: 30px;
+  margin-right: 95px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#ShearchData {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+#textNoPlayerData {
+  color: #F0C986;
+}
+
+
+#containerInfoPlayer {
+  background-color: rgba(255, 255, 255, 0.163);
+  border-radius: 5px;
+  margin: 20px 30%;
+}
+
+#LogoAndTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#shearchNamePlayer {
+  background-color: wheat;
+  color: #D7395F;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
+#shearchButoon{
+  background-color: #D7395F;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.dataColor {
   color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px !important;
+}
+#logoPlayer {
+  border: white solid 2px;
 }
 
-.App-link {
-  color: #61dafb;
+#containerPlayerDataOne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+}
+#containerDataOne{
+  display: flex;
+}
+.containerDataLvlRank {
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#containerPlayerDataTwo {
+  border-top: white 2px solid;
+  margin: 0px 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#winColor {
+  font-size: 30px;
+  color: #F0C986;
+  margin: 20px 0px 0px 0px;
+  font-weight: bold;
+}
+
+#looseColor {
+  font-size: 30px;
+  color: #D7395F;  
+  padding-bottom: 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+#logoRank {
+  height: 150px;
+  width: 150px;
+}
+
+#winPourcentage {
+  border: white 1px solid;
+  border-radius: 200px;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
 }
