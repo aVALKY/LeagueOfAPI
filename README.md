@@ -1,3 +1,7 @@
+<picture>
+ <img alt="presentation" src="https://i.postimg.cc/4xmqj6sR/fini.jpg">
+</picture>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
