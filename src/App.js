@@ -9,27 +9,51 @@ function App() {
 const [SearchText, setSearchText] = useState("");
 const [playerData, setPlayerData] = useState({});
 const [playerRank, setPlayerRank] = useState ({});
+const [PlayerRole, setPlayerRole] = useState ("");
+const [game, setGame] = useState ([]);
 
 
 
-const API_KEY ="RGAPI-c525f514-f929-4f77-8d29-5855a8c7ee3b"
+
+const API_KEY ="RGAPI-ba07289a-d410-41d8-a0f9-ba435d2d74dc"
 
 function searchForPlayer (event){
   var APIcall = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ SearchText + "?api_key=" + API_KEY;
   
   axios.get(APIcall).then(function (response) {
-    // ça fonctionne*
+    // ça fonctionne
     setPlayerData(response.data)
     axios.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"+ response.data.id + "?api_key=" + API_KEY).then(function (resp){
       setPlayerRank(resp.data[0])
     })
+
+    axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"+ response.data.puuid + "/ids?type=ranked&start=0&count=10&api_key=" + API_KEY).then(
+      (post) => {
+        let gameList = []
+      post.data.map((game) => {
+        axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + game + "?api_key="+ API_KEY).then((gameData) => {
+          gameList.push(gameData.data)
+        })
+        setGame (gameList);
+      })
+    })
+
+
   }).catch(function (error){
     // il y a une erreur
     console.log(error);
     setPlayerData({});
   });
 
-  
+
+
+}
+
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleActivation = () => {
+    setIsActive(!isActive);
+    
 }
 
   return (
@@ -55,7 +79,10 @@ function searchForPlayer (event){
                     <p className='dataColor'>{playerData.name}</p>
                     <div className='containerDataLvlRank'>
                       <p className='dataColor'> Niveau : {playerData.summonerLevel} - </p>
-                      <p className='dataColor'>{playerRank && playerRank.tier}</p>
+                      <p className='dataColor'>{playerRank && playerRank.tier } {playerRank && playerRank.rank}</p>
+                    </div>
+                    <div>
+                      <p className='dataColor'> LP : {playerRank && playerRank.leaguePoints}</p>
                     </div>
                 </div>
               </div>
@@ -75,11 +102,25 @@ function searchForPlayer (event){
                 </div>
 
             </div>
+              <div id="containerButtonPlus">
+                <button id="buttonShowMore" onClick={toggleActivation} >{isActive ? <span class="material-symbols-outlined">
+                arrow_upward</span> : <span class="material-symbols-outlined">
+                arrow_downward</span>} </button>
+              </div>
+              
           </> 
           : 
           <> <p id="textNoPlayerData">Il n'y a pas de données sur le joueur</p> </>
         }
       </div>
+      {isActive && 
+      <div id="containerInfoPlayerTwo">
+        <p id="TextTest">TEST</p>
+        {game.map((currentGame) => {
+          return currentGame.info.gameMode;
+        })}
+      </div>
+      }
     </div>
   );
 }

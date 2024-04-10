@@ -22,7 +22,7 @@ body {
 #containerInfoPlayer {
   background-color: rgba(255, 255, 255, 0.163);
   border-radius: 5px;
-  margin: 20px 30%;
+  margin: 20px 30% 0px 30%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -110,3 +110,32 @@ body {
   font-size: 20px;
   padding: 20px;
 }
+
+#containerButtonPlus {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#buttonShowMore {
+  background: none;
+  border-radius: 20px;
+  border: 2px black solid;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+#containerInfoPlayerTwo{
+  background-color: rgba(255, 255, 255, 0.163);
+  border-radius: 5px;
+  margin: 0px 20%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#TextTest{
+  text-align: center;
+}
+
+
